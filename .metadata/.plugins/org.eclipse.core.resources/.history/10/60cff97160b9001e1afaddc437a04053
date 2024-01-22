@@ -1,0 +1,14 @@
+package test;
+
+public class TestStudentData {
+
+	public static void main(String[] args) {
+		
+		Student s = new Student();
+		
+		s.setEmail("hamaguri@hama.com");
+		s.setName("Hamaguri");
+		s.setStudent_id(290);
+		s.setPhone(912776187);
+	}
+}

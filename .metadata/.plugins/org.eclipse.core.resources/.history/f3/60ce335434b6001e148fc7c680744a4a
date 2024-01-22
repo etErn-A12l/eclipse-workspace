@@ -1,0 +1,10 @@
+package servlet;
+
+import jakarta.servlet.http.HttpServlet;
+
+public class Communicate extends HttpServlet{
+
+	public static void main(String[] args) {
+		
+	}
+}

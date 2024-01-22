@@ -1,0 +1,80 @@
+package test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Student {
+	
+	private int student_id;
+	private String name;
+	private String email;
+	private long phone;
+	
+	public int getStudent_id() {
+		return student_id;
+	}
+	public void setStudent_id(int student_id) {
+		this.student_id = student_id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public long getPhone() {
+		return phone;
+	}
+	public void setPhone(long phone) {
+		this.phone = phone;
+	}
+	
+	/* 
+	 * There are 5 Steps to connect DB
+	 * 
+	 * 1) Register Driver [ Classes used - ( DriverManager / Class ) ]
+	 * 2) Connection (URL, User, Password)
+	 * 3) SQL Query (CRUD)
+	 * 4) Prepare and Execute
+	 * 5) Close Connection
+	 * 
+	 * */
+	
+	
+	public void addStudent() throws SQLException
+	{
+//		1) Register Driver [ Classes used - ( DriverManager / Class ) ]
+		DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+		
+//		 2) Connection (URL, User, Password)
+		String url = "jdbc:mysql://localhost:3306/eg_javasb01_fiem";
+		String user = "root";
+		String password = "";
+		
+		Connection conn = DriverManager.getConnection(url, user, password);
+		
+//		 3) SQL Query (CRUD)
+		String sql = "insert into student() values(?, ?, ?, ?)";
+		
+//		4) Prepare and Execute
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, student_id);
+		ps.setString(2, name);
+		ps.setString(3, email);
+		ps.setLong(4, phone);
+		
+		ps.execute();
+		
+//		5) Close Connection
+		conn.close();
+	};
+
+}
